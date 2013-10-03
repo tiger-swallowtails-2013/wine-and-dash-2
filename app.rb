@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sinatra/activerecord'  # required by gem sinatra/activerecord
+require 'sinatra/activerecord'
 
 require './user' 
 require './winery' 
@@ -14,16 +14,13 @@ end
 post '/' do
 
 	username = params[:username]
-	# session[:username] = @username
 	password = params[:password]
-	# p username, password
 	user = User.where(username: username, password: password)
 	p "user inspect:" + user.inspect
 
 	if user = User.authenticate(username,password)
 		session[:user] = user
 		p session[:user].inspect
-		# sess
 		redirect to('/home')
 	else 
 		redirect to('/')
