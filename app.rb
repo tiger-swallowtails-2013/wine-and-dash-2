@@ -36,6 +36,10 @@ get '/home' do
 	erb :home
 end
 
+get '/winemapper' do
+	erb :winemapper
+end
+
 get '/:id' do
 	if user = User.find(params[:id]) 
 		puts "user email is #{user.email}" 
@@ -43,6 +47,8 @@ get '/:id' do
   	"there is no user with id #{params[:id]}"
   end
 end
+
+
 
 
 
